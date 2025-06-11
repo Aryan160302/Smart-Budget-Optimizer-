@@ -1,0 +1,69 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}Your Dashboard{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row g-4">
+
+        <!-- Loan Tools -->
+        <div class="col-md-6">
+            <div class="card p-4 h-100">
+                <h5 class="mb-3 text-white">💳 Loan Tools</h5>
+                <a href="{% url 'emi_calculator' %}" class="btn btn-outline-light mb-2 w-100">📊 EMI Calculator</a>
+                <a href="{% url 'emi_record' %}" class="btn btn-outline-light mb-2 w-100">➕ Record EMI</a>
+                <a href="{% url 'emi_list' %}" class="btn btn-outline-light w-100">📃 EMI List</a>
+            </div>
+        </div>
+
+        <!-- Budget & Recommendations -->
+        <div class="col-md-6">
+            <div class="card p-4 h-100">
+                <h5 class="mb-3 text-white">💸 Budget & Planning</h5>
+                <a href="{% url 'budget_optimizer' %}" class="btn btn-outline-light mb-2 w-100">💸 Budget Optimizer</a>
+                <a href="{% url 'recommendations' %}" class="btn btn-outline-light mb-2 w-100">📈 Finance Tips</a>
+                <a href="{% url 'visual_reports' %}" class="btn btn-outline-light w-100">📊 Visual Reports</a>
+            </div>
+        </div>
+
+        <!-- Expense Manager -->
+        <div class="col-md-6">
+            <div class="card p-4 h-100">
+                <h5 class="mb-3 text-white">💼 Expense Manager</h5>
+                <a href="{% url 'expense_list' %}" class="btn btn-outline-light mb-2 w-100">📋 View Expenses</a>
+                <a href="{% url 'add_expense' %}" class="btn btn-outline-light w-100">➕ Add Expense</a>
+            </div>
+        </div>
+
+        <!-- Goals -->
+        <div class="col-md-6">
+            <div class="card p-4 h-100">
+                <h5 class="mb-3 text-white">🎯 Financial Goals</h5>
+                <a href="{% url 'goal_list' %}" class="btn btn-outline-light mb-2 w-100">🎯 View Goals</a>
+                <a href="{% url 'add_goal' %}" class="btn btn-outline-light w-100">➕ Add Goal</a>
+            </div>
+        </div>
+
+        <!-- Latest Finance News -->
+        <div class="col-12">
+            <div class="card p-4">
+                <h5 class="mb-3 text-white">📰 Latest Finance News</h5>
+                {% if news_articles %}
+                    <ul class="list-group list-group-flush">
+                        {% for article in news_articles %}
+                            <li class="list-group-item bg-transparent border-0">
+                                <a href="{{ article.url }}" target="_blank" class="text-white fw-semibold">
+                                    {{ article.title }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p class="text-white">No news available at the moment.</p>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

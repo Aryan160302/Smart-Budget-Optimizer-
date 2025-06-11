@@ -1,0 +1,17 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+<div class="container col-lg-6 mt-4">
+  <div class="card p-4">
+    <h3 class="mb-3">📝 Create Your Account</h3>
+    <p class="text-muted">Start tracking EMIs, expenses, savings goals, and optimize your finances.</p>
+    <form method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-success mt-2 w-100">Sign Up</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}Budget Optimizer{% endblock %}
+
+{% block content %}
+    <h2>Budget Optimizer</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Optimize Budget</button>
+    </form>
+    {% if optimized_budget %}
+        <div class="alert alert-info mt-4">{{ optimized_budget }}</div>
+    {% endif %}
+{% endblock %}

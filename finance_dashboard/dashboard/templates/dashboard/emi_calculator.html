@@ -1,0 +1,14 @@
+{% extends 'dashboard/base.html' %}
+
+{% block content %}
+<h2>EMI Calculator</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Calculate EMI</button>
+</form>
+
+{% if calculated_emi %}
+    <div class="alert alert-info mt-4">Your EMI is: ₹{{ calculated_emi }}</div>
+{% endif %}
+{% endblock %}

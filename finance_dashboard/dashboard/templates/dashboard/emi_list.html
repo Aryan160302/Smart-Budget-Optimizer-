@@ -1,0 +1,35 @@
+{% extends 'dashboard/base.html' %}
+{% block title %}EMI List{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-white mb-4">📃 Your EMI Records</h2>
+    <table class="table table-hover table-dark">
+        <thead>
+            <tr>
+                <th>Loan Name</th>
+                <th>Issuing Bank</th>
+                <th>Amount</th>
+                <th>Interest Rate</th>
+                <th>EMI</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for emi in emis %}
+            <tr>
+                <td>{{ emi.loan_name }}</td>
+                <td>{{ emi.issuing_bank }}</td>
+                <td>₹{{ emi.loan_amount }}</td>
+                <td>{{ emi.interest_rate }}%</td>
+                <td>₹{{ emi.emi_amount|floatformat:2 }}</td>
+                <td>
+                    <a href="{% url 'delete_emi' emi.id %}" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="6" class="text-center">No EMI records found.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

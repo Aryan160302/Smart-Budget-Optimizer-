@@ -1,0 +1,10 @@
+{% extends 'dashboard/base.html' %}
+
+{% block content %}
+<div class="text-center mt-5">
+  <h1>💸 Welcome to Aryan's Finance Dashboard!</h1>
+  <p class="lead">Your personal financial planner for EMIs, budgets, goals & expense tracking.</p>
+  <a href="{% url 'login' %}" class="btn btn-primary m-2">🔑 Login</a>
+  <a href="{% url 'signup' %}" class="btn btn-success m-2">📝 Sign Up</a>
+</div>
+{% endblock %}
